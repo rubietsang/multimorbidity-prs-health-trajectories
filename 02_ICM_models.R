@@ -39,12 +39,12 @@ fmi <- tidy(fmi_icm, exponentiate = T, conf.int = T)[c(6, 18),] %>%
   mutate(outcome = "Fat mass index") %>%
   relocate(outcome)
 
-lmi_icm <- lmer(ln_lmi ~ ns(age_cen9, df = 4) +
+lmi_icm <- lmer(ln_lmi ~ ns(age_cen9, df = 5) +
                   linc_icm + age_cen9:linc_icm + sex +
                   pc1 + pc2 + pc3 + pc4 + pc5 + pc6 + pc7 + pc8 + pc9 + pc10 +
                   (1 | id), REML = F, data = dxa_long)
 
-lmi <- tidy(lmi_icm, exponentiate = T, conf.int = T)[c(6, 18),] %>%
+lmi <- tidy(lmi_icm, exponentiate = T, conf.int = T)[c(7, 19),] %>%
   mutate(outcome = "Lean mass index") %>%
   relocate(outcome)
 
